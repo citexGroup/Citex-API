@@ -26,9 +26,8 @@
     2.Fetch currency information
     3.Fetch system time
     4.Fetch order book
-    5.Fetch order history
-    6.Fetch quote information
-    7.Fetch K line data
+    5.Fetch quote information
+    6.Fetch K line data
     
 [Private API Endpoints(need authentication)](#private-api-endpointsneed-authentication)
 
