@@ -44,13 +44,6 @@ def get_order_book(symbol):
     return detail
 # print(get_order_book('ETH-USDT'))
 
-def get_order_history(id):
-    url = base + '/mapi/quot/queryTickTrade'
-    r = requests.get(url, params = {'contractId':id})
-    detail = r.json()
-    return detail
-# print(get_order_history(1))
-
 def get_tickers():
     url = base + '/api/v1/common/allticker'
     r = requests.get(url)

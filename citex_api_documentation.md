@@ -145,33 +145,7 @@
 * `bids`:max 25 bids,price:price,quantity:quantity;bid1 to bid25 prices and quantities, total: added up quantity.
 * `asks`:max 25 asks,price:price,quantity:quantity;ask1 to ask25 prices and quantities, total: added up quantity.
 
-## 5.	Fetch order history
-* `Request` 
-
-   GET /mapi/quot/queryTickTrade
-* `Param` 
-
-    int contractId : 1
-* `Response` 
-```javascript
-{
-  "msg": "True",
-  "data": {
-            "trades": [
-                        [
-                            1525443244401673,
-                            0.08241,
-                            0.194,
-                            -1
-                        ]
-                      ]
-          }
-
-}
-```
-* `Every record`:timestamp,order price,order quantity,side（1is buy,-1 is sell）, max 10 records
-
-## 6.	Fetch quote information
+## 5.	Fetch quote information
 * `Request` 
 
    GET /api/v1/common/allticker
@@ -202,7 +176,7 @@
 ```
 * `symbol`:symbol name
 
-## 7.	Fetch K line data
+## 6.	Fetch K line data
 * `Request` 
 
    GET /mapi/quot/queryCandlestick
