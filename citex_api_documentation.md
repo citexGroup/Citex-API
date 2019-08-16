@@ -1,6 +1,7 @@
-# Public Rest API for Citex (2019-08-08)
+# Public Rest API for Citex (2019-08-16)
 # General API Information
-* The base endpoint is: **Ask Citex support**, if not, it will be marked.
+* The base endpoint is: **Ask Citex support**.
+* The auth key is: **Ask Citex support**.(Must include auth key in headers when request API)
 * All endpoints return either a JSON object.
 * Any endpoint can return an ERROR; The ERROR can be different. Only the message is successful would be went through:
 ```javascript
@@ -16,7 +17,8 @@
 * Parameters may be sent in any order.
 
 # LIMITS
-* All API request rate limit is `10 times/sec`. It will cause request failed if request more than 10 times/sec. `Suggestion:` Every time to request, make sure the response status is success.
+* All API request rate limit is `600 times/min`. It will cause request failed if request more than 600 times/min. `Suggestion:` Every time to request, make sure the response status is success.
+* The sum of request per auth key is 600 times/min. In another word, you can request in different IP at same time no more than 600 times per minute.
 
 # OUTLOOK
 
@@ -48,6 +50,10 @@
 * `Request` 
 
    GET /api/v1/common/symbols
+* `Headers` 
+
+   String Authorization : *******************************
+   
 * `Response` 
 ```javascript
 {
@@ -78,6 +84,10 @@
 * `Request` 
 
    GET /api/v1/common/currencys
+* `Headers` 
+
+   String Authorization : *******************************
+   
 * `Response` 
 ```javascript
 {
@@ -98,6 +108,11 @@
 * `Request` 
 
    GET /api/v1/common/timestamp
+
+* `Headers` 
+
+   String Authorization : *******************************
+   
 * `Response` 
 ```javascript
 {
@@ -111,6 +126,11 @@
 * `Request` 
 
    GET /api/v1/common/snapshot/{symbol}
+   
+* `Headers` 
+
+    String Authorization : *******************************
+    
 * `Param` 
 
    String symbol : ETH-BTC
@@ -148,6 +168,11 @@
 * `Request` 
 
    GET /api/v1/common/allticker
+   
+* `Headers` 
+
+    String Authorization : *******************************
+    
 * `Response` 
 ```javascript
 {
@@ -179,6 +204,11 @@
 * `Request` 
 
    GET /mapi/quot/queryCandlestick
+   
+* `Headers` 
+
+    String Authorization : *******************************
+    
 * `Param` 
 
     int contractId : 1
@@ -209,6 +239,10 @@
 * `Request` 
 
    GET /api/v1/account/balance
+   
+* `Headers` 
+
+    String Authorization : *******************************
 
 * `Response` 
 ```javascript
@@ -232,6 +266,11 @@
 * `Request` 
 
    POST /api/v1/order/orders/place
+   
+* `Headers` 
+
+    String Authorization : *******************************
+    
 * `Param` 
 
     String contractId : "1", contract ID
@@ -257,6 +296,11 @@
 * `Request` 
 
    POST /api/v1/order/orders/cancel
+
+* `Headers` 
+
+    String Authorization : *******************************
+    
 * `Param` 
 
     String contractId : "1", contract ID
@@ -274,6 +318,10 @@
 * `Request` 
 
    GET /api/v1/order/orders/{orderId}
+   
+* `Headers` 
+
+    String Authorization : *******************************
 
 * `Response` 
 ```javascript
@@ -315,6 +363,10 @@
 * `Request` 
 
    GET /api/v1/order/list
+ 
+* `Headers` 
+
+    String Authorization : *******************************
 
 * `Response` 
 ```javascript
@@ -348,6 +400,10 @@
 * `Request` 
 
    GET /api/v1/order/{contract_id}/history
+   
+* `Headers` 
+
+    String Authorization : *******************************
 
 * `Response` 
 ```javascript
@@ -380,6 +436,7 @@
 * `matchTime`: match time
 * `side`: order side
 * `orderType`:order type
+*  Order history has most recent 200 orders.The first order data is most recent one. 
 
 
 # Authentication
@@ -409,6 +466,7 @@ For example:
     base + /api/v1/order/orders/15485146161498?AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&
     SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2019-06-20T09%3A38%3A06&
     Signature=41OKsrDrG%2BizHgziwi00RbXjV3KURYXXp//7HqpciOc%3D
+And add auth key in headers. 
 
 ## Authentication request process:
 
@@ -483,6 +541,8 @@ For example:
         base + /api/v1/order/orders/15485146161498?AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&
         SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2019-06-20T09%3A38%3A06&
         Signature=41OKsrDrG%2BizHgziwi00RbXjV3KURYXXp//7HqpciOc%3D
+        
+    And don't forgot to add auth key in headers.
 
 
 * Another example:
@@ -492,3 +552,5 @@ For example:
        base + /api/v1/account/balance?AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&
        SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2019-06-20T09%3A38%3A06&
        Signature=ydOk2DwcpAcujVnfPmsJDXn8b7Wl9HCDay98Bs82pa0%3D
+       
+    And don't forgot to add auth key in headers.
