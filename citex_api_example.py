@@ -13,47 +13,48 @@ from urllib.parse import quote
 base = ''
 access_key = 'e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx'   #example
 secret_key = 'b0xxxxxx-c6xxxxxx-94xxxxxx-dxxxx'     #example
-
+auth = '**************************************'    #example
 u = 'api.citex.io'
+headers = {'Authorization':auth}
 
 def get_symbols():
-    url = base + '/v1/common/symbols'
-    r = requests.get(url)
+    url = base + '/api-test/v1/common/symbols'
+    r = requests.get(url, headers = headers)
     detail = r.json()
     return detail
 # print(get_symbols())
 
 def get_currencys():
-    url = base + '/api/v1/common/currencys'
-    r = requests.get(url)
+    url = base + '/api-test/v1/common/currencys'
+    r = requests.get(url, headers = headers)
     detail = r.json()
     return detail
 # print(get_currencys())
 
 def get_server_time():
-    url = base + '/api/v1/common/timestamp'
-    r = requests.get(url)
+    url = base + '/api-test/v1/common/timestamp'
+    r = requests.get(url, headers = headers)
     detail = r.json()
     return detail
 # print(get_server_time())
 
 def get_order_book(symbol):
-    url = base + '/api/v1/common/snapshot/%s'%symbol
-    r = requests.get(url=url)
+    url = base + '/api-test/v1/common/snapshot/%s'%symbol
+    r = requests.get(url=url, headers = headers)
     detail = r.json()
     return detail
 # print(get_order_book('ETH-USDT'))
 
 def get_tickers():
-    url = base + '/api/v1/common/allticker'
-    r = requests.get(url)
+    url = base + '/api-test/v1/common/allticker'
+    r = requests.get(url, headers = headers)
     detail = r.json()
     return detail
 # print(get_tickers())
 #
 def get_kline(contract_id, range):
-    url = base + '/mapi/quot/queryCandlestick'
-    r = requests.get(url, params={'symbol':contract_id, 'range':range})
+    url = base + '/mapi-test/quot/queryCandlestick'
+    r = requests.get(url, params={'symbol':contract_id, 'range':range}, headers = headers)
     detail = r.json()
     return detail
 # print(get_kline(1, '60000'))
@@ -111,7 +112,7 @@ def place_order(contractId, price, quantity, side, orderType):
     # print(url + '?' + added_data + '&' + 'Signature=' + signature)
     detail = r.json()
     return detail
-# print(place_order('134','0.02','1','1','1'))
+# print(place_order('14','0.02','1','1','3'))
 
 def cancel_order(contractId, orderId):
     timestamp = str(quote(datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
@@ -131,7 +132,7 @@ def cancel_order(contractId, orderId):
 
     detail = r.json()
     return detail
-# print(cancel_order('134', '1564804341159861'))
+# print(cancel_order('134', '1564804532013945'))
 
 def list_orders(orderId):
     timestamp = str(quote(datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
@@ -150,7 +151,7 @@ def list_orders(orderId):
     # print(url + '?' + added_data + '&' + 'Signature=' + signature)
     detail = r.json()
     return detail
-# print(list_orders("1564264397180590"))
+# print(list_orders("1564804532013945"))
 
 def open_orders():
     timestamp = str(quote(datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
@@ -169,8 +170,7 @@ def open_orders():
     # print(url + '?' + added_data + '&' + 'Signature=' + signature)
     detail = r.json()
     return detail
-# orders = open_orders()
-# print(orders)
+# print(open_orders())
 
 def order_history(contractId):
     contId = str(contractId)
@@ -190,16 +190,4 @@ def order_history(contractId):
     # print(url + '?' + added_data + '&' + 'Signature=' + signature)
     detail = r.json()
     return detail
-# print(order_history(14))
-
-# if __name__ == '__main__':
-#     n = 1
-#     while True:
-#         po = place_order('98','0.00000999','0.1','1','1')
-#         if 'msg' in po and po['msg'] == 'success':
-#             print(n, datetime.now())
-#             n = n+1
-
-        # print(get_balance())
-        # print(datetime.now())
-        # time.sleep(0.1)
+# print(order_history(14)['data'])
