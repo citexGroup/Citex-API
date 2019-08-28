@@ -83,7 +83,7 @@ def get_balance():
     # print(dataJsonStr)
     signature = quote(createHash(dataJsonStr=dataJsonStr))
     # print(signature)
-    r = requests.get(url=url + '?' + added_data + '&' + 'Signature=' + signature)
+    r = requests.get(url=url + '?' + added_data + '&' + 'Signature=' + signature, headers = headers)
     # print(url + '?' + added_data + '&' + 'Signature=' + signature)
     detail = r.json()
     return detail
@@ -108,7 +108,7 @@ def place_order(contractId, price, quantity, side, orderType):
 
     data = {"orderType":orderType,"side":side,"quantity":quantity,"price":price,"contractId":contractId,"timeInForce":"1"}
     # print(data)
-    r = requests.post(url=url + '?' + added_data + '&' + 'Signature=' + signature, json = data)
+    r = requests.post(url=url + '?' + added_data + '&' + 'Signature=' + signature, json = data, headers = headers)
     # print(url + '?' + added_data + '&' + 'Signature=' + signature)
     detail = r.json()
     return detail
@@ -128,7 +128,7 @@ def cancel_order(contractId, orderId):
     signature = quote(createHash(dataJsonStr=dataJsonStr))
     # print(signature)
     data = {"contractId":contractId,"orderId":orderId}
-    r = requests.post(url=url + '?' + added_data + '&' + 'Signature=' + signature, json = data)
+    r = requests.post(url=url + '?' + added_data + '&' + 'Signature=' + signature, json = data, headers = headers)
 
     detail = r.json()
     return detail
@@ -147,7 +147,7 @@ def list_orders(orderId):
     # print(dataJsonStr)
     signature = quote(createHash(dataJsonStr=dataJsonStr))
     # print(signature)
-    r = requests.get(url=url + '?' + added_data + '&' + 'Signature=' + signature)
+    r = requests.get(url=url + '?' + added_data + '&' + 'Signature=' + signature, headers = headers)
     # print(url + '?' + added_data + '&' + 'Signature=' + signature)
     detail = r.json()
     return detail
@@ -166,7 +166,7 @@ def open_orders():
     # print(dataJsonStr)
     signature = quote(createHash(dataJsonStr=dataJsonStr))
     # print(signature)
-    r = requests.get(url=url + '?' + added_data + '&' + 'Signature=' + signature)
+    r = requests.get(url=url + '?' + added_data + '&' + 'Signature=' + signature, headers = headers)
     # print(url + '?' + added_data + '&' + 'Signature=' + signature)
     detail = r.json()
     return detail
@@ -186,7 +186,7 @@ def order_history(contractId):
     # print(dataJsonStr)
     signature = quote(createHash(dataJsonStr=dataJsonStr))
     # print(signature)
-    r = requests.get(url=url + '?' + added_data + '&' + 'Signature=' + signature)
+    r = requests.get(url=url + '?' + added_data + '&' + 'Signature=' + signature, headers = headers)
     # print(url + '?' + added_data + '&' + 'Signature=' + signature)
     detail = r.json()
     return detail
