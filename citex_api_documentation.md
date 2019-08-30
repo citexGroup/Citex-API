@@ -211,9 +211,9 @@
     
 * `Param` 
 
-    int contractId : 1
+    Int contractId : 1
     
-    range: string, For example,"range":"60000", param range: 60000,300000,900000,1800000,3600000,86400000,604800000, 
+    String range: string, For example,"range":"60000", param range: 60000,300000,900000,1800000,3600000,86400000,604800000, 
     
     60000 is 1 min,300000 is 5 mins and so on.
 * `Response` 
@@ -483,13 +483,13 @@ And add auth key in headers.
         GET\n
 
 2. 
-    add \n after api.citex.io.
+    add \n after api.citex.io.(Warning: Must use 'api.citex.io', Not the base endpoint that CITEX Support provided)
 
         api.citex.io\n
 
-3. Request method url, add \n in the end:
+3. Request method url, add \n in the end: (Warning: There is no '/api' in the beginning. Start with '/v1/....')
 
-        api/v1/order/orders/15485146161498\n
+        /v1/order/orders/15485146161498\n
 
 4. Group by parameters by ASCII. (Use UTF-8 encode, and URLENCODE encode, 16 binary character must be capital. For example, ':'will be encode to ‘%3A’. Space will be encode to ‘%20’). For example, original parameters:
         
@@ -553,4 +553,4 @@ And add auth key in headers.
        SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2019-06-20T09%3A38%3A06&
        Signature=ydOk2DwcpAcujVnfPmsJDXn8b7Wl9HCDay98Bs82pa0%3D
        
-    And don't forgot to add auth key in headers.
+    And don't forgot to add auth key in the headers.
