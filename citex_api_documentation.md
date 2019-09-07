@@ -145,14 +145,12 @@
                         {
                             "price": "0.082541",
                             "quantity": "1.439"
-		                    "total": "1.439"
                         }, 
                      ],
              "asks": [
                         {
                             "price": "0.082461",
                             "quantity": "0.08019"
-		                    "total": "1.439"
                         },
                      ],
 
@@ -161,8 +159,8 @@
 }
 ```
 * `symbol`:symbol name
-* `bids`:max 25 bids,price:price,quantity:quantity;bid1 to bid25 prices and quantities, total: added up quantity.
-* `asks`:max 25 asks,price:price,quantity:quantity;ask1 to ask25 prices and quantities, total: added up quantity.
+* `bids`:max 50 bids,price:price,quantity:quantity;bid1 to bid50 prices and quantities.
+* `asks`:max 50 asks,price:price,quantity:quantity;ask1 to ask50 prices and quantities.
 
 ## 5.	Fetch quote information
 * `Request` 
@@ -211,7 +209,7 @@
     
 * `Param` 
 
-    Int contractId : 1
+    String contractId : "1"
     
     String range: string, For example,"range":"60000", param range: 60000,300000,900000,1800000,3600000,86400000,604800000, 
     
