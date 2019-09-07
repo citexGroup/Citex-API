@@ -18,42 +18,42 @@ u = 'api.citex.io'
 headers = {'Authorization':auth}
 
 def get_symbols():
-    url = base + '/api-test/v1/common/symbols'
+    url = base + '/api/v1/common/symbols'
     r = requests.get(url, headers = headers)
     detail = r.json()
     return detail
 # print(get_symbols())
 
 def get_currencys():
-    url = base + '/api-test/v1/common/currencys'
+    url = base + '/api/v1/common/currencys'
     r = requests.get(url, headers = headers)
     detail = r.json()
     return detail
 # print(get_currencys())
 
 def get_server_time():
-    url = base + '/api-test/v1/common/timestamp'
+    url = base + '/api/v1/common/timestamp'
     r = requests.get(url, headers = headers)
     detail = r.json()
     return detail
 # print(get_server_time())
 
 def get_order_book(symbol):
-    url = base + '/api-test/v1/common/snapshot/%s'%symbol
+    url = base + '/api/v1/common/snapshot/%s'%symbol
     r = requests.get(url=url, headers = headers)
     detail = r.json()
     return detail
 # print(get_order_book('ETH-USDT'))
 
 def get_tickers():
-    url = base + '/api-test/v1/common/allticker'
+    url = base + '/api/v1/common/allticker'
     r = requests.get(url, headers = headers)
     detail = r.json()
     return detail
 # print(get_tickers())
 #
 def get_kline(contract_id, range):
-    url = base + '/mapi-test/quot/queryCandlestick'
+    url = base + '/mapi/quot/queryCandlestick'
     r = requests.get(url, params={'contractId':contract_id, 'range':range}, headers = headers)
     detail = r.json()
     return detail
