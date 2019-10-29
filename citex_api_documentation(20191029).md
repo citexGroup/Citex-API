@@ -209,7 +209,7 @@
     
 * `Param` 
 
-    String symbol : "eth_btc"
+    String symbol : "ETH_BTC"
     
     Int type : Not required, default 1(1min). (1,3,5,15,30,60,120,240,360,1440)
     
