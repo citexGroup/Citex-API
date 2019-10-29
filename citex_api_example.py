@@ -52,12 +52,12 @@ def get_tickers():
     return detail
 # print(get_tickers())
 #
-def get_kline(contract_id, range):
-    url = base + '/mapi/quot/queryCandlestick'
-    r = requests.get(url, params={'contractId':contract_id, 'range':range}, headers = headers)
+def get_candlestick(symbol, type, size):
+    url = base + '/api/v1/common/candlestick'
+    r = requests.get(url, params={'symbol':symbol, 'type':type, 'size':size}, headers=headers)
     detail = r.json()
     return detail
-# print(get_kline('1', '60000'))
+# print(get_candlestick('eth_btc', 15, 20))
 
 
 #Need verification
