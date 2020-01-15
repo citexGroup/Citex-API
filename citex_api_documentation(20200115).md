@@ -249,12 +249,14 @@
 {
     "code": 0,
     "msg": "success",
-    "data": [{
-                "currencyName": "ETH",
-	            "totalBalance": "563.216"
-                "available": "563.216"
-                "frozenForTrade": "0", 
-            }]
+    "data": [
+                {
+                    "currencyName": "ETH",
+                    "totalBalance": "563.216"
+                    "available": "563.216"
+                    "frozenForTrade": "0", 
+                }
+            ]
 }
 ```
 * `available`:available balance
